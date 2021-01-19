@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Activity</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body>
+  <div class="title-bar">
+    <div class="title-bar__name" onclick="location.reload()">
+      <span></span>
+    </div>
+    <div class="title-bar__controls">
+      <span href="#minimize">
+        <svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12">
+          <rect fill="currentColor" width="10" height="1" x="1" y="6"></rect>
+        </svg>
+      </span>
+      <span href="#maximize" maximize>
+        <svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12">
+          <rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="currentColor"></rect>
+        </svg>
+      </span>
+      <span href="#close">
+        <svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12">
+          <polygon fill="currentColor" fill-rule="evenodd"
+            points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1">
+          </polygon>
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="preload">
+    <div class="frame">
+      <span class="image">
+        <span class="spinner">
+          <span class="spinner-inner spinner-wandering-cubes">
+            <span class="spinner-item"></span>
+            <span class="spinner-item"></span>
+          </span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <div id="app">
+    <aside>
+      <nav>
+        <div class="side">
+          <div class="header">
+            settings
+          </div>
+          <div class="items">
+            <div class="item active" data-target="dp">
+              Discord Presence
+            </div>
+          </div>
+        </div>
+      </nav>
+    </aside>
+    <div class="content">
+      <div class="side">
+        <div class="inner dp">
+          <div class="header">Discord Presence</div>
+          <form class="dpp row">
+            <div class="col-12">
+              <label for="dp__id">Application ID</label>
+              <input type="text" id="dp__id" class="col-12">
+            </div>
+            <div class="col-6"> <label for="dp__id">Details</label>
+              <input type="text" id="dp__details">
+            </div>
+            <div class="col-6"> <label for="dp__id">State</label>
+              <input type="text" id="dp__state">
+            </div>
+            <div class="col-6">
+              <label for="dp__id">Large Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
+              <input type="text" id="dp__large_key">
+              <input type="text" id="dp__large_text">
+            </div>
+            <div class="col-6">
+              <label for="dp__id">Small Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
+              <input type="text" id="dp__small_key">
+              <input type="text" id="dp__small_text">
+            </div>
+          </form>
+          <div class="button-group mt-4">
+            <button class="btn primary submit" data-submit="dp">Update</button>
+            <button class="btn primary-outline preview">Preview</button>
+            <button class="btn danger config-reset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog" id="preview">
+    <div class="bg-shadow">
+    </div>
+    <div class="dialog-content">
+      <div class="dialog-top">
+        <div class="dialog-top-head">
+          <div class="avatar">
+            <img src="https://cdn.discordapp.com/avatars/701400631662870609/b94820e8ae8b78a5bc218e8557e033ba.png"
+              aria-hidden="true">
+          </div>
+          <div class="info">
+            <div class="user">
+              <span>someone</span>
+              <span>#0000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dialog-top-bottom"></div>
+      <div class="dialog-body">
+        <h3 class="dialog-title">playing a game</h3>
+        <div class="playing">
+          <div class="assets">
+            <img src="./assets/preview-placeholder.png" alt=" " class="large">
+            <img src="./assets/preview-placeholder.png" alt=" " class="small">
+          </div>
+          <div class="doing">
+            <h3 class="fat brackets">appname</h3>
+            <p class="brackets">details</p>
+            <p class="brackets">state</p>
+            <p><span class="brackets">time</span> elapsed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
