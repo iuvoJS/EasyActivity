@@ -1,6 +1,6 @@
 const $ = require("jquery");
 let { remote } = require("electron");
-const { app } = remote;
+const { app, Tray, Menu } = remote;
 const BrowserWindow = remote.getCurrentWindow();
 const fs = require("fs");
 const path = require("path");
@@ -8,6 +8,40 @@ const discord_rpc = require("discord-rpc");
 const rpc = new discord_rpc.Client({
   transport: "ipc",
 });
+
+function createTray() {
+  let trayIcon = new Tray(path.join(__dirname, "/assets/logo/logo.png"));
+
+  const trayMenu = [
+    {
+      label: "Apply",
+      click: function () {
+        $(".submit[data-submit=dp]").click();
+      },
+    },
+    {
+      label: "Hide",
+      click: function () {
+        BrowserWindow.hide();
+      },
+    },
+    {
+      label: "Show",
+      click: function () {
+        BrowserWindow.show();
+      },
+    },
+    {
+      label: "Close",
+      click: function () {
+        window.close();
+      },
+    },
+  ];
+
+  let tray = Menu.buildFromTemplate(trayMenu);
+  trayIcon.setContextMenu(tray);
+}
 
 function createUserDataFolder(folder) {
   const target = path.join(app.getPath("userData"), folder);
@@ -51,57 +85,39 @@ $(document).ready(function () {
       );
       if (fs.existsSync(preconfig)) {
         if (fs.readFileSync(preconfig).length === 0) {
-          writeJSON(
-            "config",
-            {
-              app_id: "",
-              details: "",
-              state: "",
-              large_key: "",
-              large_text: "",
-              small_key: "",
-              small_text: "",
-            },
-            "discord_pre"
-          );
+          writeTemplate();
         }
       } else {
-        writeJSON(
-          "config",
-          {
-            app_id: "",
-            details: "",
-            state: "",
-            large_key: "",
-            large_text: "",
-            small_key: "",
-            small_text: "",
-          },
-          "discord_pre"
-        );
+        writeTemplate();
       }
     },
     "after"
   );
+  createTray();
 });
 
-$(".config-reset").click(function () {
-  createUserDataFolder("discord_pre");
-  fs.unlinkSync(path.join(app.getPath("userData"), "discord_pre/config.json"));
+writeTemplate = function () {
   writeJSON(
     "config",
     {
       app_id: "801220827877998602",
-      details: "",
-      state: "",
-      large_key: "",
-      large_text: "",
-      small_key: "",
-      small_text: "",
+      details: "Rich Presence Tool",
+      state: "developed by m2v",
+      large_key: "large",
+      large_text: "Discord Rich Presence Tool",
+      small_key: "small",
+      small_text: "github.com/iuvoJS/",
     },
     "discord_pre"
   );
+};
+
+$(".config-reset").click(function () {
+  createUserDataFolder("discord_pre");
+  fs.unlinkSync(path.join(app.getPath("userData"), "discord_pre/config.json"));
+  writeTemplate();
   readContent();
+  $(".submit[data-submit=dp]").click();
 });
 
 $(".preview").click(function () {
