@@ -1,8 +1,8 @@
 {
   "name": "easyactivity",
   "productName": "EasyActivity",
-  "version": "1.0.0",
-  "description": "Discord custom presence tool",
+  "version": "1.0.2",
+  "description": "Discord Activity Tool",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
