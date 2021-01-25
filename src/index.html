@@ -11,7 +11,7 @@
 
 <body>
   <div class="title-bar">
-    <div class="title-bar__name" onclick="location.reload()">
+    <div class="title-bar__name reload">
       <span></span>
     </div>
     <div class="title-bar__controls">
@@ -34,63 +34,57 @@
       </span>
     </div>
   </div>
-  <div class="preload">
-    <div class="frame">
-      <span class="image">
-        <span class="spinner">
-          <span class="spinner-inner spinner-wandering-cubes">
-            <span class="spinner-item"></span>
-            <span class="spinner-item"></span>
-          </span>
-        </span>
-      </span>
-    </div>
-  </div>
   <div id="app">
-    <aside>
-      <nav>
+    <div class="container">
+      <aside>
+        <nav>
+          <div class="side  shadow-lg">
+            <div class="header">
+              settings
+            </div>
+            <div class="items">
+              <div class="item active reload" data-target="dp">
+                Discord Presence
+              </div>
+            </div>
+          </div>
+        </nav>
+      </aside>
+      <div class="content">
         <div class="side">
-          <div class="header">
-            settings
-          </div>
-          <div class="items">
-            <div class="item active" data-target="dp">
-              Discord Presence
+          <div class="inner dp shadow-lg">
+            <div class="header">Discord Presence</div>
+            <form class="dpp row">
+              <div class="col-12">
+                <label for="dp__id">Application ID</label>
+                <div class="warning-wrapper">
+                  <input type="text" id="dp__id" class="col-12">
+                  <p class="warning reload">If you change the application ID twice you have to reload the program (F5)
+                  </p>
+                </div>
+              </div>
+              <div class="col-6"> <label for="dp__id">Details</label>
+                <input type="text" id="dp__details">
+              </div>
+              <div class="col-6"> <label for="dp__id">State</label>
+                <input type="text" id="dp__state">
+              </div>
+              <div class="col-6">
+                <label for="dp__id">Large Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
+                <input type="text" id="dp__large_key">
+                <input type="text" id="dp__large_text">
+              </div>
+              <div class="col-6">
+                <label for="dp__id">Small Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
+                <input type="text" id="dp__small_key">
+                <input type="text" id="dp__small_text">
+              </div>
+            </form>
+            <div class="button-group mt-4">
+              <button class="btn primary submit" data-submit="dp">Update</button>
+              <button class="btn primary-outline preview">Preview</button>
+              <button class="btn danger config-reset">Reset</button>
             </div>
-          </div>
-        </div>
-      </nav>
-    </aside>
-    <div class="content">
-      <div class="side">
-        <div class="inner dp">
-          <div class="header">Discord Presence</div>
-          <form class="dpp row">
-            <div class="col-12">
-              <label for="dp__id">Application ID</label>
-              <input type="text" id="dp__id" class="col-12">
-            </div>
-            <div class="col-6"> <label for="dp__id">Details</label>
-              <input type="text" id="dp__details">
-            </div>
-            <div class="col-6"> <label for="dp__id">State</label>
-              <input type="text" id="dp__state">
-            </div>
-            <div class="col-6">
-              <label for="dp__id">Large Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
-              <input type="text" id="dp__large_key">
-              <input type="text" id="dp__large_text">
-            </div>
-            <div class="col-6">
-              <label for="dp__id">Small Image:&nbsp;&nbsp;&nbsp;&nbsp;Key + Text</label>
-              <input type="text" id="dp__small_key">
-              <input type="text" id="dp__small_text">
-            </div>
-          </form>
-          <div class="button-group mt-4">
-            <button class="btn primary submit" data-submit="dp">Update</button>
-            <button class="btn primary-outline preview">Preview</button>
-            <button class="btn danger config-reset">Reset</button>
           </div>
         </div>
       </div>
@@ -132,8 +126,6 @@
       </div>
     </div>
   </div>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <script src="./js/app.js"></script>
 </body>
 

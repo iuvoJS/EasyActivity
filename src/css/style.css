@@ -1,54 +1,6 @@
 @import url("../fonts/Whitney/style.css");
-:root {
-  --main-color: #7289DA;
-  --main-color-dark: #4e5d94;
-  --not-black: #2C2F33;
-  --not-black-2: #2f3235;
-  --nearly-black: #23272A;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  color: #fff;
-  font-family: "Whitney", sans-serif;
-  overflow: hidden;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "Uni Sans Heavy";
-  src: url("../fonts/Uni Sans Heavy.otf");
-  font-style: normal;
-  font-weight: bold;
-}
-
-body::-webkit-scrollbar {
-  height: 50px;
-  width: var(--scrollbar-width);
-  background-color: var(--background-dark);
-}
-
-body::-webkit-scrollbar-thumb {
-  height: 50px;
-  border-radius: .25rem;
-  background-color: var(--scrollbar-fill);
-}
-
-body.scrollbar-hidden::-webkit-scrollbar {
-  background-color: var(--background);
-}
-
-body.scrollbar-hidden::-webkit-scrollbar-thumb {
-  background-color: var(--background);
-}
-
 .title-bar {
-  background-color: var(--nearly-black);
+  background-color: var(--background-light);
   position: fixed;
   top: 0;
   right: 0;
@@ -81,13 +33,13 @@ body.scrollbar-hidden::-webkit-scrollbar-thumb {
 }
 
 .title-bar .title-bar__name span {
-  color: #aaa;
+  color: #f8f8f8;
   letter-spacing: .75px;
   cursor: pointer;
 }
 
 .title-bar .title-bar__name span:hover {
-  opacity: .8;
+  color: #fff;
 }
 
 .title-bar .title-bar__controls {
@@ -131,109 +83,33 @@ body.scrollbar-hidden::-webkit-scrollbar-thumb {
 }
 
 body {
-  margin-top: 20px;
+  margin-top: 20px !important;
 }
 
-.preload {
-  background-color: var(--nearly-black);
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: var(--nearly-black);
+:root {
+  --main-color: #5468ff;
+  --main-color-dark: #5363dc;
+  --main-color-grey: #636cb4;
+  --background-light: rgb(58, 65, 111);
+  --background-dark: rgb(33, 36, 61);
+  --warning: #ffd82a;
+  --warning-alt: #cca700;
 }
 
-.preload.finish {
-  opacity: 0;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: "Whitney", sans-serif;
+  overflow: hidden;
+  background-color: var(--background-light);
 }
 
-.frame {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -55%);
-          transform: translate(-50%, -55%);
-}
-
-.frame .image {
-  display: inline-block;
-  position: relative;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
-  vertical-align: bottom;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: rgba(0, 0, 0, 0.05);
-  background-size: 100% 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.frame .image .spinner-wandering-cubes .spinner-item {
-  -webkit-animation: spinner-wandering-cubes 1.8s infinite ease-in-out;
-  animation: spinner-wandering-cubes 1.8s infinite ease-in-out;
-  background-color: #7289da;
-  height: 10px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 10px;
-}
-
-.frame .image .spinner-wandering-cubes .spinner-item:last-child {
-  -webkit-animation-delay: -.9s;
-          animation-delay: -.9s;
-}
-
-@-webkit-keyframes spinner-wandering-cubes {
-  25% {
-    -webkit-transform: translateX(22px) rotate(-90deg) scale(0.5);
-            transform: translateX(22px) rotate(-90deg) scale(0.5);
-  }
-  50% {
-    -webkit-transform: translateX(22px) translateY(22px) rotate(-180deg);
-            transform: translateX(22px) translateY(22px) rotate(-180deg);
-  }
-  75% {
-    -webkit-transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
-            transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
-  }
-  to {
-    -webkit-transform: rotate(-1turn);
-            transform: rotate(-1turn);
-  }
-}
-
-@keyframes spinner-wandering-cubes {
-  25% {
-    -webkit-transform: translateX(22px) rotate(-90deg) scale(0.5);
-            transform: translateX(22px) rotate(-90deg) scale(0.5);
-  }
-  50% {
-    -webkit-transform: translateX(22px) translateY(22px) rotate(-180deg);
-            transform: translateX(22px) translateY(22px) rotate(-180deg);
-  }
-  75% {
-    -webkit-transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
-            transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
-  }
-  to {
-    -webkit-transform: rotate(-1turn);
-            transform: rotate(-1turn);
-  }
+@font-face {
+  font-family: "Uni Sans Heavy";
+  src: url("../fonts/Uni Sans Heavy.otf");
+  font-style: normal;
+  font-weight: bold;
 }
 
 .btn {
@@ -275,16 +151,38 @@ button + button {
   margin-left: 16px;
 }
 
+.warning-wrapper:hover .warning {
+  opacity: 1;
+}
+
+.warning {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  color: var(--warning) !important;
+  font-size: 11px;
+  padding-right: 1px;
+  opacity: .2;
+  cursor: pointer;
+}
+
+.warning:hover {
+  color: var(--warning-alt);
+}
+
 #app {
-  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#app .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 #app aside {
-  width: 40%;
-  background-color: var(--nearly-black);
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -294,11 +192,13 @@ button + button {
 }
 
 #app aside nav {
-  padding: 60px 16px 60px 20px;
-  width: 218px;
+  height: 100%;
+  padding: 60px 0 90px 50px;
+  width: 300px;
 }
 
 #app aside nav div.side {
+  background-color: var(--background-dark);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,6 +209,10 @@ button + button {
   text-align: left;
   -ms-flex-item-align: baseline;
       align-self: baseline;
+  min-height: 250px;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 10px 7px;
 }
 
 #app aside nav div.side div.header {
@@ -321,9 +225,14 @@ button + button {
   color: #ccc;
 }
 
-#app aside nav div.side div.item {
+#app aside nav div.side div.items {
+  padding: 0 5px;
+}
+
+#app aside nav div.side div.items div.item {
   cursor: pointer;
-  background-color: var(--nearly-black);
+  background-color: var(--main-color);
+  opacity: .9;
   padding: 6px 10px;
   margin-bottom: 6px;
   border-radius: 3px;
@@ -331,17 +240,13 @@ button + button {
   transition: 0.2s ease;
 }
 
-#app aside nav div.side div.item:hover {
-  background-color: var(--not-black-2);
-}
-
-#app aside nav div.side div.item.active {
-  background-color: var(--not-black);
+#app aside nav div.side div.items div.item:hover {
+  background-color: var(--main-color-dark);
 }
 
 #app .content {
   width: 100%;
-  background-color: var(--not-black);
+  background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -351,12 +256,17 @@ button + button {
 }
 
 #app .content .side {
-  background-color: var(--not-black);
   width: auto;
-  padding: 60px 40px 80px;
+  padding: 60px 40px 90px;
   max-width: 740px;
   min-width: 460px;
   min-height: 100%;
+}
+
+#app .content .side .inner {
+  background-color: var(--background-dark);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
 }
 
 #app .content .side .inner .header {
@@ -390,14 +300,14 @@ button + button {
   font-size: 16px;
   border-radius: 4px;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--nearly-black);
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.4);
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
 #app .content .side .inner form input:hover {
-  border-color: rgba(1, 1, 1, 0.1);
+  border-color: rgba(1, 1, 1, 0.3);
 }
 
 #app .content .side .inner form input:focus {
@@ -449,7 +359,7 @@ button + button {
   width: 600px;
   max-height: 660px;
   min-height: 200px;
-  background-color: #36393f;
+  background-color: var(--background-light);
   border-radius: 8px;
   overflow: hidden;
   -webkit-box-shadow: 0 0 0 1px rgba(32, 34, 37, 0.6), 0 2px 10px 0 rgba(0, 0, 0, 0.2);
@@ -457,7 +367,7 @@ button + button {
 }
 
 .dialog .dialog-content .dialog-top {
-  background-color: var(--main-color);
+  background-color: var(--background-dark);
 }
 
 .dialog .dialog-content .dialog-top .dialog-top-head {

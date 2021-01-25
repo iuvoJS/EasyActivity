@@ -74,25 +74,19 @@ function writeJSON(filename, content, folder) {
 }
 
 $(document).ready(function () {
-  preload.hide(
-    250,
-    () => {
-      $(".title-bar__name span").text(document.title);
-      createUserDataFolder("discord_pre");
-      const preconfig = path.join(
-        app.getPath("userData"),
-        "discord_pre/config.json"
-      );
-      if (fs.existsSync(preconfig)) {
-        if (fs.readFileSync(preconfig).length === 0) {
-          writeTemplate();
-        }
-      } else {
-        writeTemplate();
-      }
-    },
-    "after"
+  $(".title-bar__name span").text(document.title);
+  createUserDataFolder("discord_pre");
+  const preconfig = path.join(
+    app.getPath("userData"),
+    "discord_pre/config.json"
   );
+  if (fs.existsSync(preconfig)) {
+    if (fs.readFileSync(preconfig).length === 0) {
+      writeTemplate();
+    }
+  } else {
+    writeTemplate();
+  }
   createTray();
 });
 
@@ -204,43 +198,6 @@ $(".submit[data-submit=dp]").click(function () {
   );
 });
 
-class Preload {
-  constructor() {
-    this.hide = function (delay, func, time) {
-      if (typeof delay === undefined) delay = 50;
-      if (time == "after" && typeof func == "function") {
-        var func__do = true;
-      } else if (time == "before" && typeof func == "function") {
-        func();
-      }
-
-      setTimeout(function () {
-        if (func__do) {
-          func();
-        }
-        $(".preload").addClass("finish");
-      }, delay);
-    };
-
-    this.restart = function () {
-      const e = $(".preload");
-      if (e.hasClass("finish")) e.removeClass("finish");
-    };
-
-    this.show = function (duration) {
-      const e = $(".preload");
-      if (e.hasClass("finish")) e.removeClass("finish");
-      if (typeof duration === "number") {
-        setTimeout(function () {
-          if (!e.hasClass("finish")) e.addClass("finish");
-        }, duration);
-      }
-    };
-  }
-}
-
-let preload = new Preload();
-
 // Debug
 $(document).keydown(function (e) {
   if (e.which == 116 || e.which == 27) {
@@ -254,4 +211,8 @@ $(document).keydown(function (e) {
       BrowserWindow.openDevTools();
     }
   }
+});
+
+$(".reload").click(() => {
+  location.reload();
 });

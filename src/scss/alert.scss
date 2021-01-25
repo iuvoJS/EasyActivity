@@ -1,0 +1,72 @@
+@import "./titlebar";
+@import "./var";
+
+.main {
+    text-align: center;
+
+    .icon {
+        padding-top: 25vh;
+
+        svg {
+            height: 210px;
+            fill: var(--main-color);
+        }
+    }
+
+    .bottom-left {
+        position: absolute;
+        bottom: 3px;
+        left: 5px;
+        height: auto;
+        width: auto;
+        text-align: left;
+    }
+
+    h1 {
+        margin-top: 5px;
+        font-size: 32px;
+        font-weight: bold;
+    }
+}
+
+.astronaut-wrapper {
+    position: absolute;
+    top: 78%;
+    right: 8%;
+    animation: move-astronaut 50s infinite linear both alternate;
+
+    img {
+        width: 150px;
+        animation: rotate-astronaut 200s infinite linear both alternate;
+    }
+}
+
+@keyframes move-astronaut {
+    100% {
+        -webkit-transform: translate(-160px, -160px);
+        transform: translate(-160px, -160px);
+    }
+}
+
+@keyframes rotate-astronaut {
+    100% {
+        -webkit-transform: rotate(-720deg);
+        transform: rotate(-720deg);
+    }
+}
+
+.planets {
+    .earth {
+        position: absolute;
+        top: 20%;
+        left: 15%;
+        width: 100px;
+    }
+
+    .moon {
+        position: absolute;
+        top: 12%;
+        left: 25%;
+        width: 80px;
+    }
+}

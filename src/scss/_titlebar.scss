@@ -1,5 +1,5 @@
 .title-bar {
-    background-color: var(--nearly-black);
+    background-color: var(--background-light);
     position: fixed;
     top: 0;
     right: 0;
@@ -25,12 +25,12 @@
         font-weight: bold;
 
         span {
-            color: #aaa;
+            color: #f8f8f8;
             letter-spacing: .75px;
             cursor: pointer;
 
             &:hover {
-                opacity: .8;
+                color: #fff;
             }
         }
     }
@@ -69,5 +69,5 @@
 }
 
 body {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
