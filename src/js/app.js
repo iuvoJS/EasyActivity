@@ -1,47 +1,21 @@
+// DOM Manipulator
 const $ = require("jquery");
+// Gives access to more modules
 let { remote } = require("electron");
+// App, System Tray, System Menu
 const { app, Tray, Menu } = remote;
+// Browser Window
 const BrowserWindow = remote.getCurrentWindow();
+// File System
 const fs = require("fs");
 const path = require("path");
+// Notify Tool
+const notifier = require("node-notifier");
+// Discord RPC
 const discord_rpc = require("discord-rpc");
 const rpc = new discord_rpc.Client({
   transport: "ipc",
 });
-
-function createTray() {
-  let trayIcon = new Tray(path.join(__dirname, "/assets/logo/logo.png"));
-
-  const trayMenu = [
-    {
-      label: "Apply",
-      click: function () {
-        $(".submit[data-submit=dp]").click();
-      },
-    },
-    {
-      label: "Hide",
-      click: function () {
-        BrowserWindow.hide();
-      },
-    },
-    {
-      label: "Show",
-      click: function () {
-        BrowserWindow.show();
-      },
-    },
-    {
-      label: "Close",
-      click: function () {
-        window.close();
-      },
-    },
-  ];
-
-  let tray = Menu.buildFromTemplate(trayMenu);
-  trayIcon.setContextMenu(tray);
-}
 
 function createUserDataFolder(folder) {
   const target = path.join(app.getPath("userData"), folder);
@@ -53,11 +27,9 @@ function createUserDataFolder(folder) {
   return false;
 }
 
-function createUserDataFile(filename, extension, folder, content) {}
-
 function readJSON(filename, folder) {
   let raw = fs.readFileSync(
-    path.join(app.getPath("userData"), folder + "/" + filename + ".json"),
+    path.join(app.getPath("userData"), `${folder}/${filename}.json`),
     "utf-8"
   );
 
@@ -87,7 +59,7 @@ $(document).ready(function () {
   } else {
     writeTemplate();
   }
-  createTray();
+  readContent();
 });
 
 writeTemplate = function () {
@@ -106,6 +78,20 @@ writeTemplate = function () {
   );
 };
 
+$(".on-hide").click (function (e) {
+  BrowserWindow.hide();
+  notifier.notify({
+    title: "Minimized to Tray",
+    message: "EasyActivity has been minimized in the system tray, if you don't want this click on me",
+    icon: path.join(__dirname, "assets/logo/logo_full.png"),
+    sound: true,
+    wait: false,
+  }),
+    notifier.on("click", function () {
+      BrowserWindow.show();
+    });
+})
+
 $(".config-reset").click(function () {
   createUserDataFolder("discord_pre");
   fs.unlinkSync(path.join(app.getPath("userData"), "discord_pre/config.json"));
@@ -123,6 +109,7 @@ $(".dialog .bg-shadow").click(function () {
 });
 
 $(".title-bar span").click(function (e) {
+  // Click on Menubar
   e.preventDefault();
   target = $(this).attr("href");
 
@@ -143,11 +130,8 @@ $(".title-bar span").click(function (e) {
   }
 });
 
-$(document).ready(function () {
-  readContent();
-});
-
 function readContent() {
+  // Read form values
   const file = readJSON("config", "discord_pre");
   $("form.dpp #dp__id").val(file.app_id);
   $("form.dpp #dp__details").val(file.details);

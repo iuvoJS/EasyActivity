@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu, Tray } = require("electron");
 const path = require("path");
 const fs = require("fs");
+
 
 if (fs.existsSync(path.join(app.getPath("userData"), "../discord/"))) {
   var loadFile = "index.html";
@@ -29,6 +30,18 @@ const createWindow = () => {
 
   mainWindow.maximize();
   mainWindow.loadFile(path.join(__dirname, loadFile));
+
+  app.whenReady().then(() => {
+    tray = new Tray(path.join(__dirname, "assets/logo/logo.png"))
+    const contextMenu = Menu.buildFromTemplate([
+      { label: 'Show', click: () => { mainWindow.show() } },
+      { label: 'Hide', click: () => { mainWindow.hide() } },
+      { label: 'Close', click: () => { mainWindow.close() } }
+    ])
+    tray.setToolTip('This is my application.')
+    tray.setContextMenu(contextMenu)
+  })
+  
 };
 
 app.on("ready", createWindow);

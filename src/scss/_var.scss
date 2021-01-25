@@ -2,10 +2,13 @@
 
 :root {
     --main-color: #5468ff;
-    --main-color-dark: #5363dc;
+    --main-color-dark: #4857c7;
     --main-color-grey: #636cb4;
     --background-light: rgb(58, 65, 111);
     --background-dark: rgb(33, 36, 61);
+
+    --danger: #f04747;
+    --danger-alt: #b12727;
 
     --warning: #ffd82a;
     --warning-alt: #cca700;
@@ -57,8 +60,19 @@ body {
     }
 
     &.danger {
-        color: #f04747;
-        border: 1px solid #f04747;
+        color: #fff;
+        background-color: var(--danger);
+        border-color: var(--danger);
+
+        &:hover {
+            background-color: var(--danger-alt);
+            border-color: var(--danger-alt);
+        }
+    }
+
+    &.danger-outline {
+        color: var(--danger);
+        border-color: var(--danger);
         background-color: transparent;
     }
 

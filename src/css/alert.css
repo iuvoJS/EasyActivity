@@ -1,0 +1,268 @@
+@import url("../fonts/Whitney/style.css");
+.title-bar {
+  background-color: var(--background-light);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000000;
+  width: 100vw;
+  bottom: auto;
+  height: 20px;
+  max-height: 20px;
+  min-height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  font-size: 12px;
+}
+
+.title-bar .title-bar__name {
+  -webkit-app-region: no-drag;
+  margin-left: 5px;
+  font-family: "Uni Sans Heavy";
+  font-weight: bold;
+}
+
+.title-bar .title-bar__name span {
+  color: #f8f8f8;
+  letter-spacing: .75px;
+  cursor: pointer;
+}
+
+.title-bar .title-bar__name span:hover {
+  color: #fff;
+}
+
+.title-bar .title-bar__controls {
+  -webkit-app-region: no-drag;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.title-bar .title-bar__controls span {
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  padding-right: 17px;
+  padding-left: 17px;
+  height: 100%;
+  color: #f8f8f8;
+  opacity: .6;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.title-bar .title-bar__controls span:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.title-bar .title-bar__controls span:first-child i::before {
+  width: 220%;
+}
+
+.title-bar .title-bar__controls span:last-child {
+  padding-right: 22px;
+}
+
+body {
+  margin-top: 20px !important;
+}
+
+:root {
+  --main-color: #5468ff;
+  --main-color-dark: #4857c7;
+  --main-color-grey: #636cb4;
+  --background-light: rgb(58, 65, 111);
+  --background-dark: rgb(33, 36, 61);
+  --danger: #f04747;
+  --danger-alt: #b12727;
+  --warning: #ffd82a;
+  --warning-alt: #cca700;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: "Whitney", sans-serif;
+  overflow: hidden;
+  background-color: var(--background-light);
+}
+
+@font-face {
+  font-family: "Uni Sans Heavy";
+  src: url("../fonts/Uni Sans Heavy.otf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+.btn {
+  font-size: 15px;
+  line-height: 16px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+}
+
+.btn:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.btn.primary {
+  color: #fff;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.btn.primary:hover {
+  border-color: var(--main-color-dark);
+  background-color: var(--main-color-dark);
+}
+
+.btn.primary-outline {
+  color: var(--main-color);
+  border-color: var(--main-color);
+  background-color: transparent;
+}
+
+.btn.danger {
+  color: #fff;
+  background-color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn.danger:hover {
+  background-color: var(--danger-alt);
+  border-color: var(--danger-alt);
+}
+
+.btn.danger-outline {
+  color: var(--danger);
+  border-color: var(--danger);
+  background-color: transparent;
+}
+
+button + button {
+  margin-left: 16px;
+}
+
+.warning-wrapper:hover .warning {
+  opacity: 1;
+}
+
+.warning {
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  color: var(--warning) !important;
+  font-size: 11px;
+  padding-right: 1px;
+  opacity: .2;
+  cursor: pointer;
+}
+
+.warning:hover {
+  color: var(--warning-alt);
+}
+
+.main {
+  text-align: center;
+}
+
+.main .icon {
+  padding-top: 25vh;
+}
+
+.main .icon svg {
+  height: 210px;
+  fill: var(--main-color);
+}
+
+.main .bottom-left {
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
+  height: auto;
+  width: auto;
+  text-align: left;
+}
+
+.main h1 {
+  margin-top: 5px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.astronaut-wrapper {
+  position: absolute;
+  top: 78%;
+  right: 8%;
+  -webkit-animation: move-astronaut 50s infinite linear both alternate;
+          animation: move-astronaut 50s infinite linear both alternate;
+}
+
+.astronaut-wrapper img {
+  width: 150px;
+  -webkit-animation: rotate-astronaut 200s infinite linear both alternate;
+          animation: rotate-astronaut 200s infinite linear both alternate;
+}
+
+@-webkit-keyframes move-astronaut {
+  100% {
+    -webkit-transform: translate(-160px, -160px);
+    transform: translate(-160px, -160px);
+  }
+}
+
+@keyframes move-astronaut {
+  100% {
+    -webkit-transform: translate(-160px, -160px);
+    transform: translate(-160px, -160px);
+  }
+}
+
+@-webkit-keyframes rotate-astronaut {
+  100% {
+    -webkit-transform: rotate(-720deg);
+    transform: rotate(-720deg);
+  }
+}
+
+@keyframes rotate-astronaut {
+  100% {
+    -webkit-transform: rotate(-720deg);
+    transform: rotate(-720deg);
+  }
+}
+
+.planets .earth {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 100px;
+}
+
+.planets .moon {
+  position: absolute;
+  top: 12%;
+  left: 25%;
+  width: 80px;
+}
+/*# sourceMappingURL=alert.css.map */
